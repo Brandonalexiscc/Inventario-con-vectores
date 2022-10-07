@@ -3,7 +3,6 @@ import Inventario from "./inventario.js";
 
 const inventario = new Inventario();
 
-
 document.getElementById('agregar').addEventListener('click', () =>{
     const nombre = document.getElementById('nombre').value;
     const codigo = document.getElementById('codigo').value;
@@ -19,6 +18,21 @@ document.getElementById('agregar').addEventListener('click', () =>{
     listaProducto.innerHTML = elemento;
 });
 
+
+document.getElementById('insertarPosicion').addEventListener('click', () =>{
+    const nombre = document.getElementById('nombre').value;
+    const codigo = document.getElementById('codigo').value;
+    const cantidad = document.getElementById('cantidad').value;
+    const costo = document.getElementById('costo').value;
+    let posicion = document.getElementById('posicion').value;
+    let producto = new Productos(nombre, codigo, cantidad, costo);
+
+    inventario.insertarProductoEnPosicion(producto, posicion);
+    let elemento = inventario.mostrarProducto();
+
+    let listaProducto = document.getElementById('producto-list');
+    listaProducto.innerHTML = elemento;
+});
 
 document.getElementById('eliminar-Codigo').addEventListener('click', () => {
     const codigoEliminar = document.getElementById('codigoEliminar').value;
@@ -40,25 +54,19 @@ document.getElementById('buscar-Codigo').addEventListener('click', () =>{
         alert('Producto No Encontrado');
 });
 
-document.getElementById('agregar').addEventListener('click', () =>{
-    const nombre = document.getElementById('nombre').value;
-    const codigo = document.getElementById('codigo').value;
-    const cantidad = document.getElementById('cantidad').value;
-    const costo = document.getElementById('costo').value;
+document.getElementById('lista').addEventListener('click', () =>{
+    inventario.listaProductos();
 
-    const producto = new Productos(nombre, codigo, cantidad, costo);
-
-    inventario.insertarProductoEnPosicion(producto);
-    let elemento = inventario.mostrarProducto();
-
+    let elemento = inventario.listaProductos();
     let listaProducto = document.getElementById('producto-list');
     listaProducto.innerHTML = elemento;
-});
+})
 
 document.getElementById('inverso').addEventListener('click', () =>{
-    const interfaz = new Inventario();
-    interfaz.recuperarListado();
+    inventario.listarProductosOrdenInverso();
 
-    e.preventDefault();
+    let elemento = inventario.listarProductosOrdenInverso();
+    let listaProducto = document.getElementById('producto-list');
+    listaProducto.innerHTML = elemento;
 });
 

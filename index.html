@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://bootswatch.com/5/litera/bootstrap.min.css">
     <link rel="stylesheet" href="main.css" type="text/css">
+    <script type="module" src="inventario.js"></script>
 
     <title>Inventario</title>
 </head>
@@ -42,8 +43,10 @@
     <br>
     <br>
     <div class="insertarPosicion">
-        <input type="text" placeholder="Insertar producto en nueva posicion" required>
-        <input type="button" value="posicion" class="btn btn-primary btn-block">
+        <input type="text" placeholder="Insertar producto en nueva posicion" id="insertarPosicion" required>
+        <button type="button" value="posicion" class="btn btn-primary btn-block">
+            Producto nuevo
+        </button>    
     </div>
     </div>        
     <br>
@@ -78,11 +81,21 @@
                             class="form-control">
                         </div>
                         <br>
+                        <div class="form-group">
+                            <input type="text" name="posc" id="posicion" placeholder="Posición"
+                            class="form-control">
+                        </div>
+                        <br>
                         <div class="agregar">
                             <input type="button" id="agregar" value="Guardar" class="btn btn-primary btn-block">
                         </div>
+                        <br>
+                        <div class="lista">
+                            <input type="button" id="lista" value="Mostrar Lista" class="btn btn-primary btn-block">
+                        </div>
+                        <br>
                         <div class="listar-inverso">
-                            <input type="button" id="inverso" value="Listar Inverso" class="btn btn-secondary btn-block">
+                            <input type="button" id="inverso" value="Listar En Orden Inverso" class="btn btn-primary btn-block">
                         </div>
                     </form>
                 </div>

@@ -55,14 +55,14 @@ export default class Inventario{
                     </div>
                     </div>
             `;
-                }
+            }
         }
         return cadena;
     }
 
     insertarProductoEnPosicion(producto, posicion){
-         let nvoProd = this.producto[posicion];
-         this.productos[posicion] = producto;
+         let nvoProd = this.productos[posicion-1];
+         this.productos[posicion-1] = producto;
          for(let i = posicion+1; i<this.productos.length; i++){
             let nvoProd2 = this.productos[i];
             this.productos[i] = nvoProd;
@@ -70,16 +70,37 @@ export default class Inventario{
          }
     }
 
-    
-
-    recuperarListado(){
-        let listaProducto = document.getElementById('producto-list');
-        let producto = document.getElementById('producto-list').value;
-        if(producto === listaProducto.value){
-            alert('Listado Recuperado');
-        }else{
-            alert('Listado No Recuerado');
+    listaProductos(){
+        let cadena = '';
+        for (let i = 0; i < this.productos.length; i++){
+            cadena += `<div class="card text-center  Tb.4">
+            <div class="card.body">
+                <strong>Producto</strong>: ${this.productos[i].nombre}&nbsp;
+                <strong>Codigo</strong>: ${this.productos[i].codigo}&nbsp;
+                <strong>Cantidad</strong>: ${this.productos[i].cantidad}&nbsp;
+                <strong>Costo</strong>: ${this.productos[i].costo}
+            </div>
+        </div>
+        `;
         }
+        return cadena;
     }
 
+    listarProductosOrdenInverso() {
+        let cadena = '';
+        for (let i = this.productos.length; i >= 0; i--) {
+            if (this.productos[i])
+                cadena += `<div class="card text-center  Tb.4">
+                <div class="card.body">
+                    <strong>Producto</strong>: ${this.productos[i].nombre}&nbsp;
+                    <strong>Codigo</strong>: ${this.productos[i].codigo}&nbsp;
+                    <strong>Cantidad</strong>: ${this.productos[i].cantidad}&nbsp;
+                    <strong>Costo</strong>: ${this.productos[i].costo};
+                </div>
+                </div>
+            `;
+        }
+        return cadena;
+    }
 }
+
